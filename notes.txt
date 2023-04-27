@@ -1,0 +1,54 @@
+FINAL PROJECT NOTES
+
+** NO TRIPLEBYTE **
+
+Project Planning
+- Trello board
+  - contains following lists:
+    1. Icebox: holds user stories that have yet to be moved to Current/MVP list, all user stories are originally in icebox, including both MVP and wishlist stories
+    2. Current/MVP: holds user stories that must be completed to meet the minimum project reqs... once MVP has been met, additional user stories may be moved from the Icebox
+    3. Completed: holds completed user stories
+    4. Wireframes: sketches of each screen's user interface for the major functionality of the app
+    5. Entity-Relationship-Diagram (ERD): diagram of the app's models (one per data entity) and the relationships between them
+
+** user stories need to be formed using this template: "As a <role>, I want <feature> so that <reason>. (reason is optional if obvious) 
+
+Source Control & README
+  - Intro
+  - Tech used
+  - Getting Started: link to planning (Trello board) and deployed app
+  - Unsolved problems
+  - Future enhancements
+
+Technical Requirements/Deliverables
+1. full-stack SPA
+2. use MERN stack
+3. styled front-end that communicates with Express backend via AJAX
+4. token-based authentication
+5. authorization by restricting functionality to authenticated users
+6. navigation should responsd to login status of the user
+7. have AT LEAST a User data entity for auth
+  - other data entities can be added and related but are not required
+8. have comprehensive feature-set
+  - Full CRUD across all Data Entities
+    OR
+  - one of the following features:
+    1. consume 3rd party API and display API data in components
+    2. include an ADMIN interface w/ features
+    3. utilize multi-user, real-time communications
+
+
+Best Practices
+- write DRY code
+- in a SPA, communication with backend is via AJAX... build RESTful APIs to CRUD your data entities and perform other functionality via AJAX
+  - in React, AJAX calls should be made from "service" modules, not directly from components
+- write well-formatted code
+- COMMENT code
+
+Project ideas
+
+1. Blog
+2. To do list with extra functionality
+3. E-commerce
+4. Social Media
+5. Myspace clone
