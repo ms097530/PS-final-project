@@ -1,9 +1,10 @@
 import { useState } from "react";
 
-import SignUpForm from "../components/SignUpForm";
-import LoginForm from "../components/LogInForm";
+import SignUpForm from "../components/SignUpForm/SignUpForm";
+import LogInForm from '../components/LoginForm/LogInForm'
 
-function AuthPage({ setUser }) {
+function AuthPage({ setUser })
+{
   const [showLogin, setShowLogin] = useState(true);
 
   return (
@@ -15,7 +16,7 @@ function AuthPage({ setUser }) {
       </button>
 
       {showLogin ? (
-        <LoginForm setUser={setUser} />
+        <LogInForm setUser={setUser} />
       ) : (
         <SignUpForm setUser={setUser} />
       )}

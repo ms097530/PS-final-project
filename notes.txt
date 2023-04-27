@@ -52,3 +52,31 @@ Project ideas
 3. E-commerce
 4. Social Media
 5. Myspace clone
+
+
+
+---- MYSPACE CLONE ----
+
+- focus on getting user profiles setup and being able to view and edit those? 
+- keep posts and comments separate and keep comments simple?
+
+POSTS
+- have top-level comments stored in document
+COMMENTS
+- comments store direct replies
+- iterate through recursively
+
+
+POST:
+comments: [ { id: 1, replies: [{id :2, replies: [] }, 3, 4] }, {id: 5, replies
+
+
+
+
+
+
+
+
+
+
+
