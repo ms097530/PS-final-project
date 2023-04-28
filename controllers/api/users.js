@@ -1,5 +1,6 @@
 //* Request handler Logic
 const User = require('../../models/user');
+const Profile = require('../../models/profile')
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
@@ -16,7 +17,9 @@ async function create(req, res)
     {
         //* creating a new user
         const user = await User.create(req.body);
+        const userProfile = await Profile.create({ user: user._id })
         // console.log(user);
+        console.log(userProfile)
 
         //* creating a new jwt
         const token = createJWT(user);

@@ -18,6 +18,7 @@ function App()
   return (
     <main className="App">
       {user ?
+        // * rather than immediately navigating to NewOrderPage after login, navigate to logged in user's profile
         <>
           <NavBar user={user} setUser={setUser} />
           <Routes>

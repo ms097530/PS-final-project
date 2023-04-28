@@ -21,22 +21,28 @@ const userSchema = new Schema({
     minLength: 3,
     required: true,
   },
+  profile: {
+    type: mongoose.SchemaTypes.ObjectId,
+    ref: 'Profile'
+  }
 }, {
-    timestamps: true,
-    toJSON: function(doc, ret) {
-        delete ret.password;
-        return ret;
-    }
+  timestamps: true,
+  toJSON: function (doc, ret)
+  {
+    delete ret.password;
+    return ret;
+  }
 });
 
 //* Pre Hook
-userSchema.pre('save', async function(next) {
-    // if password was NOT modified continue to the next middleware
-    if (!this.isModified('password')) return next();
+userSchema.pre('save', async function (next)
+{
+  // if password was NOT modified continue to the next middleware
+  if (!this.isModified('password')) return next();
 
-    // update the password with the computed hash
-    this.password = await bcrypt.hash(this.password, SALT_ROUNDS)
-    return next();
+  // update the password with the computed hash
+  this.password = await bcrypt.hash(this.password, SALT_ROUNDS)
+  return next();
 })
 
 module.exports = mongoose.model("User", userSchema);
