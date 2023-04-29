@@ -6,7 +6,11 @@ const usersCtrl = require('../../controllers/api/users');
 const ensureLoggedIn = require('../../config/ensureLoggedIn');
 
 
-//* POST 
+//* POST
+
+// get info about specific user with profile info
+router.get('/:id', usersCtrl.getUserInfo)
+
 router.post('/', usersCtrl.create);
 
 router.post('/login', usersCtrl.login);

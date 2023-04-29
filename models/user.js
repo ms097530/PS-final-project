@@ -27,6 +27,8 @@ const userSchema = new Schema({
   }
 }, {
   timestamps: true,
+  // ? I think this determines the output of a built-in instance-level function
+  // ? here, it is making sure the password is removed before returning JSON of the "user" instance to wherever userInstance.toJSON was called
   toJSON: function (doc, ret)
   {
     delete ret.password;

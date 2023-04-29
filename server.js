@@ -32,11 +32,13 @@ app.use('/api/users', require('./routes/api/users'));
 // Put API routes here, before the "catch all" route
 // The following "catch all" route (note the *) is necessary
 // to return the index.html on all non-AJAX requests
-app.get('/*', (req, res) => {
+app.get('/*', (req, res) =>
+{
     res.sendFile(path.join(__dirname, 'build', 'index.html'))
 })
 
 
-app.listen(PORT, () => {
+app.listen(PORT, () =>
+{
     console.log(`Server is running on port: ${PORT}`);
 })

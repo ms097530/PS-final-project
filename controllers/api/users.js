@@ -15,7 +15,7 @@ async function create(req, res)
     // console.log('[From POST handler]', req.body)
     try
     {
-        //* creating a new user
+        //* creating a new user and associating new profile with the created user
         const user = await User.create(req.body);
         const userProfile = await Profile.create({ user: user._id })
         // console.log(user);
@@ -53,6 +53,11 @@ async function login(req, res)
     }
 }
 
+async function getUserInfo(req, res)
+{
+
+}
+
 
 async function checkToken(req, res)
 {
@@ -64,5 +69,6 @@ async function checkToken(req, res)
 module.exports = {
     create,
     login,
+    getUserInfo,
     checkToken
 }
