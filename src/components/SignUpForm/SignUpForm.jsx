@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { signUp } from '../../utilities/users-service';
+import { useNavigate } from "react-router-dom";
 
 function SignUpForm({ setUser })
 {
@@ -10,6 +11,7 @@ function SignUpForm({ setUser })
     confirm: "",
     error: "",
   });
+  const navigate = useNavigate()
 
   const disable = formData.password !== formData.confirm;
 
@@ -29,7 +31,7 @@ function SignUpForm({ setUser })
       // returns a token with the user info
       const user = await signUp(userData); // user service
       setUser(user);
-
+      navigate(`/users/${user._id}`)
     } catch (error)
     {
       setFormData({ ...formData, error: "Sign Up Failed - Try Again" })
@@ -51,7 +53,7 @@ function SignUpForm({ setUser })
           <label>Email</label>
           <input type="text" name="email" value={formData.email} onChange={handleChange} required />
 
-          <label>password</label>
+          <label>Password</label>
           <input type="password" name="password" value={formData.password} onChange={handleChange} required />
 
           <label>Confirm</label>
