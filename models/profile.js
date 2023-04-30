@@ -33,20 +33,20 @@ const profileSchema = new Schema({
         trim: true
     },
     // ? may be better to move friends and friendRequsts into their own schemas in the future to eliminate risks of unbound array?
-    friends:
-        [
-            {
-                type: mongoose.SchemaTypes.ObjectId,
-                ref: 'User'
-            }
-        ],
-    friendRequests:
-        [
-            {
-                type: mongoose.SchemaTypes.ObjectId,
-                ref: 'User'
-            }
-        ]
+    // friends:
+    //     [
+    //         {
+    //             type: mongoose.SchemaTypes.ObjectId,
+    //             ref: 'User'
+    //         }
+    //     ],
+    // friendRequests:
+    //     [
+    //         {
+    //             type: mongoose.SchemaTypes.ObjectId,
+    //             ref: 'User'
+    //         }
+    //     ]
 })
 
 profileSchema.methods.addFriend = async function (friendId)
