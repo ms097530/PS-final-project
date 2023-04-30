@@ -10,28 +10,39 @@ import { getToken } from "./users-service";
 const BASE_URL = '/api/users';
 
 //* SignUp
-export function signUp(userData) {
+export function signUp(userData)
+{
   return sendRequest(BASE_URL, 'POST', userData);
 }
 
 
 //* Login
-export function login(credentials) {
+export function login(credentials)
+{
   return sendRequest(`${BASE_URL}/login`, 'POST', credentials);
 }
 
+//* Retrieve user info
+export function getUserInfo(userId)
+{
+  return sendRequest(`${BASE_URL}/${userId}`)
+}
+
 //* Check Token
-export function checkToken() {
-    return sendRequest(`${BASE_URL}/check-token`)
-} 
+export function checkToken()
+{
+  return sendRequest(`${BASE_URL}/check-token`)
+}
 
 /*--- Helper Functions ---*/
 
-async function sendRequest(url, method = 'GET', payload = null) {
+async function sendRequest(url, method = 'GET', payload = null)
+{
   // Fetch accepts an options object as the 2nd argument
   // used to include a data payload, set headers, etc.
   const options = { method };
-  if (payload) {
+  if (payload)
+  {
     options.headers = { 'Content-Type': 'application/json' };
     options.body = JSON.stringify(payload);
   }
@@ -39,7 +50,8 @@ async function sendRequest(url, method = 'GET', payload = null) {
   // sends token to backend
   const token = getToken();
 
-  if (token) {
+  if (token)
+  {
     options.headers = options.headers || {};
     options.headers.Authorization = `Bearer ${token}`;
   }
