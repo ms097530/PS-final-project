@@ -4,7 +4,7 @@ const Profile = require('./profile')
 const Schema = mongoose.Schema
 
 const profileSchema = new Schema({
-    userId:
+    user:
     {
         type: mongoose.SchemaTypes.ObjectId,
         ref: 'User'
