@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { getUserInfo } from '../../utilities/users-service'
+import ProfileInfo from '../../components/ProfileInfo/ProfileInfo'
 
 
 export default function ProfilePage({ loggedInUser })
@@ -21,17 +22,17 @@ export default function ProfilePage({ loggedInUser })
         fetchProfileInfo()
     }, [userId])
 
-    const userProfile = (
-        <h2>{profile?.user?.name}</h2>
-    )
-
     const loader = <h2>Loading...</h2>
 
     return (
         <div>
-            <h1>Profile Page</h1>
             {
-                profile ? userProfile : loader
+                profile ?
+                    <>
+                        <ProfileInfo profile={profile} />
+                        {/* <Posts /> */}
+                    </>
+                    : loader
             }
         </div>
     )
