@@ -53,9 +53,43 @@ async function login(req, res)
     }
 }
 
+
 async function getUserInfo(req, res)
 {
+    // get matching user profile and user name/id
+    const profile = await Profile.findOne({ user: req.params.id }).populate('user', 'name')
+    console.log(profile)
+    res.json(profile)
+}
 
+// ? create separate route and controller for friend operations and keep this for general updates?
+async function update(req, res)
+{
+    // EXPECT op=add_fr OR op=rm_fr for friend operations as query parameters for friend operations
+
+    // find user and matching profile
+    const user = await User.findById(req.params.id)
+    const profile = await Profile.findOne({ user: req.params.id })
+
+    // ? keep add and remove updates specific to those operations and only do general update without op specification?
+
+    // add friend
+    if (req.query.op.toLowerCase() === 'add_fr')
+    {
+        await profile.addFriend(req.body.friendId)
+        return res.json({ message: 'Friend added' })
+    }
+    // remove friend
+    else if (req.query.op.toLowerCase() === 'rm_fr')
+    {
+        await profile.removeFriend(req.body.friendId)
+        return res.json({ message: 'Friend removed' })
+    }
+    // normal update
+    else
+    {
+        // user = { ...user, req.body.user }
+    }
 }
 
 
