@@ -2,15 +2,14 @@ import { useState } from 'react';
 
 import { Routes, Route } from 'react-router-dom';
 
-import NewOrderPage from './pages/NewOrderPage';
-import AuthPage from './pages/AuthPage';
-import OrderHistoryPage from './pages/OrderHistoryPage';
+import AuthPage from './pages/AuthPage/AuthPage';
 import NavBar from './components/NavBar/NavBar';
 import ProfilePage from './pages/ProfilePage/ProfilePage';
 
 import { getUser } from './utilities/users-service';
 
 import './App.css';
+import FriendsPage from './pages/FriendsPage/FriendsPage';
 
 function App()
 {
@@ -26,9 +25,8 @@ function App()
             {/*
              Profile Page will need to know who current user is, provided by props, and then fetch appropriate user profile info based on provided id 
             */}
+            <Route path='/users/:userId/friends' element={<FriendsPage />} />
             <Route path='/users/:userId' element={<ProfilePage loggedInUser={user} />} />
-            <Route path='/orders/new' element={<NewOrderPage />} />
-            <Route path='/orders' element={<OrderHistoryPage />} />
           </Routes>
         </>
         :
