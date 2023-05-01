@@ -4,6 +4,11 @@ import { getUserInfo } from '../../utilities/users-service'
 
 export default function ProfileInfo({ loggedInUser, profile })
 {
+    /* 
+        TODO: friend button into component that needs current logged in user ID and another ID as props - could be used
+        TODO: in SearchResultsPage to display button to send requests next to users based on relationship with loggedInUser
+    */
+
     const [areFriends, setAreFriends] = useState(null)
     const [friendRequestExists, setFriendRequestExists] = useState(null)
 
