@@ -29,7 +29,7 @@ export default function ProfilePage({ loggedInUser })
             {
                 profile ?
                     <>
-                        <ProfileInfo profile={profile} />
+                        <ProfileInfo loggedInUser={loggedInUser} profile={profile} />
                         {/* <Posts /> */}
                     </>
                     : loader
