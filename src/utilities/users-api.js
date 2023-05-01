@@ -23,9 +23,10 @@ export function login(credentials)
 }
 
 //* Retrieve user info
-export function getUserInfo(userId)
+export function getUserInfo(userId, query = '')
 {
-  return sendRequest(`${BASE_URL}/${userId}`)
+  query = query ? '?' + query : ''
+  return sendRequest(`${BASE_URL}/${userId}${query}`)
 }
 
 //* Check Token

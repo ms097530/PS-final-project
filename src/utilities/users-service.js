@@ -61,9 +61,9 @@ export async function login(credentials)
     return getUser();
 }
 
-export function getUserInfo(userId)
+export function getUserInfo(userId, query = '')
 {
-    return usersApi.getUserInfo(userId)
+    return usersApi.getUserInfo(userId, query)
 }
 
 export async function checkToken()

@@ -1,6 +1,8 @@
 //* Request handler Logic
 const User = require('../../models/user');
 const Profile = require('../../models/profile')
+const Friend = require('../../models/friend')
+const FriendRequest = require('../../models/friendRequest')
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
@@ -54,12 +56,26 @@ async function login(req, res)
 }
 
 
-async function getUserInfo(req, res)
+async function getInfo(req, res)
 {
+    // get friends
+    if (req.query.type === 'fr')
+    {
+        const friends = await Friend.find({ $or: [{ user_1: req.params.id }, { user_2: req.params.id }] }).populate('user', 'name')
+        return res.json(friends)
+    }
+
+    // get friend requests
+    if (req.query.type === 'freq')
+    {
+        const friendRequests = await FriendRequest.find({ $or: [{ from: req.params.id }, { to: req.params.id }] }).populate('user', 'name')
+        return res.json(friendRequests)
+    }
+
     // get matching user profile and user name/id
     const profile = await Profile.findOne({ user: req.params.id }).populate('user', 'name')
     console.log(profile)
-    res.json(profile)
+    return res.json(profile)
 }
 
 // ? create separate route and controller for friend operations and keep this for general updates?
@@ -103,6 +119,6 @@ async function checkToken(req, res)
 module.exports = {
     create,
     login,
-    getUserInfo,
+    getInfo,
     checkToken
 }

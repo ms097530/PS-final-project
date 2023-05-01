@@ -6,10 +6,11 @@ const usersCtrl = require('../../controllers/api/users');
 const ensureLoggedIn = require('../../config/ensureLoggedIn');
 
 
-//* POST
-
 // get info about specific user with profile info
-router.get('/:id', usersCtrl.getUserInfo)
+// * type=fr -> returns array of friends
+// * type=freq -> returns array of friend requests
+// * otherwise returns info about specific user
+router.get('/:id', usersCtrl.getInfo)
 
 router.post('/', usersCtrl.create);
 
