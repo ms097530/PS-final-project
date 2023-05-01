@@ -7,4 +7,4 @@ const friendRequestSchema = new Schema({
     to: { type: mongoose.SchemaTypes.ObjectId, ref: 'User', required: true }
 })
 
-module.exports = mongoose.model('Friend', friendRequestSchema)
+module.exports = mongoose.model('FriendRequest', friendRequestSchema)
