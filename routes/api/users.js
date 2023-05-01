@@ -5,11 +5,11 @@ const router = express.Router();
 const usersCtrl = require('../../controllers/api/users');
 const ensureLoggedIn = require('../../config/ensureLoggedIn');
 
+router.get('/', usersCtrl.search)
 
-// get info about specific user with profile info
+// * default -> returns info about specific user and profile
 // * type=fr -> returns array of friends
 // * type=freq -> returns array of friend requests
-// * otherwise returns info about specific user
 router.get('/:id', usersCtrl.getInfo)
 
 router.post('/', usersCtrl.create);

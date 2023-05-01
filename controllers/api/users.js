@@ -55,6 +55,20 @@ async function login(req, res)
     }
 }
 
+async function search(req, res)
+{
+    // return users in db with name that starts with query name
+    // * if no name is provided, '' will make sure all users are returned - working as index
+    // ? uses rooted regex (begins with ^) to take advantage of indexes
+    const searchName = req.query.name ? req.query.name.toLowerCase() : ''
+
+    const users = await User.find(
+        { name: { $regex: new RegExp('^' + searchName, 'i') } })
+        .populate('profile', 'profileImgUrl -_id')
+
+    res.json(users)
+}
+
 
 async function getInfo(req, res)
 {
@@ -132,33 +146,11 @@ async function getInfo(req, res)
 }
 
 // ? create separate route and controller for friend operations and keep this for general updates?
+
+// * refactoring user model should make updates easier - no longer need to worry about updating or not updating friends/requests
 async function update(req, res)
 {
-    // EXPECT op=add_fr OR op=rm_fr for friend operations as query parameters for friend operations
 
-    // find user and matching profile
-    const user = await User.findById(req.params.id)
-    const profile = await Profile.findOne({ user: req.params.id })
-
-    // ? keep add and remove updates specific to those operations and only do general update without op specification?
-
-    // add friend
-    if (req.query.op.toLowerCase() === 'add_fr')
-    {
-        await profile.addFriend(req.body.friendId)
-        return res.json({ message: 'Friend added' })
-    }
-    // remove friend
-    else if (req.query.op.toLowerCase() === 'rm_fr')
-    {
-        await profile.removeFriend(req.body.friendId)
-        return res.json({ message: 'Friend removed' })
-    }
-    // normal update
-    else
-    {
-        // user = { ...user, req.body.user }
-    }
 }
 
 
@@ -172,6 +164,8 @@ async function checkToken(req, res)
 module.exports = {
     create,
     login,
+    search,
     getInfo,
+    update,
     checkToken
 }
