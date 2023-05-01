@@ -15,7 +15,7 @@ export default function ProfileInfo({ profile })
             <h2>
                 {profile?.headline}
             </h2>
-            <Friends friends={profile.friends} isCompact={true} />
+            <Friends userId={profile.user._id} isCompact={true} />
         </>
     )
 }

@@ -58,21 +58,40 @@ async function login(req, res)
 
 async function getInfo(req, res)
 {
+    console.log(req.params)
     // get friends
     if (req.query.type === 'fr')
     {
-        const friends = await Friend.find({ $or: [{ user_1: req.params.id }, { user_2: req.params.id }] }).populate('user', 'name')
+        // console.log('GETTING FRIENDS')
+        const friends = await Friend.find(
+            // find friend where one of the linked users ids matches param id
+            // exclude friend instance _id from results
+            { $or: [{ user_1: req.params.id }, { user_2: req.params.id }] }, '-_id')
+            // populate users associated with friend instance with only the name and profile
+            // then populate the profile with profileImgUrl, exclude profile _id
+            .populate(
+                {
+                    path: 'user_1 user_2',
+                    select: 'name profile',
+                    populate: {
+                        path: 'profile',
+                        select: 'profileImgUrl -_id'
+                    }
+                })
+
         return res.json(friends)
     }
 
     // get friend requests
     if (req.query.type === 'freq')
     {
-        const friendRequests = await FriendRequest.find({ $or: [{ from: req.params.id }, { to: req.params.id }] }).populate('user', 'name')
+        // console.log('GETTING FRIEND REQUESTS')
+        const friendRequests = await FriendRequest.find({ $or: [{ from: req.params.id }, { to: req.params.id }] }).populate('from to', 'name')
         return res.json(friendRequests)
     }
 
     // get matching user profile and user name/id
+    // console.log('GETTING USER DATA')
     const profile = await Profile.findOne({ user: req.params.id }).populate('user', 'name')
     console.log(profile)
     return res.json(profile)
