@@ -62,6 +62,21 @@ async function getInfo(req, res)
     // get friends
     if (req.query.type === 'fr')
     {
+
+        if (req.query.friend)
+        {
+            // console.log('CHECKING IF FRIENDS')
+            const friend = await Friend.findOne({
+                $or:
+                    [
+                        { $and: [{ user_1: req.params.id }, { user_2: req.query.friend }] },
+                        { $and: [{ user_1: req.query.friend }, { user_2: req.params.id }] }
+                    ]
+            })
+
+            return res.json(friend ? true : false)
+        }
+
         // console.log('GETTING FRIENDS')
         const friends = await Friend.find(
             // find friend where one of the linked users ids matches param id
@@ -85,6 +100,25 @@ async function getInfo(req, res)
     // get friend requests
     if (req.query.type === 'freq')
     {
+        if (req.query.user)
+        {
+            // console.log('CHECKING IF FRIENDS')
+            const friendReq = await FriendRequest.findOne({
+                $or:
+                    [
+                        { $and: [{ from: req.params.id }, { to: req.query.user }] },
+                        { $and: [{ from: req.query.user }, { to: req.params.id }] }
+                    ]
+            })
+
+            // is there a friend request between the two?
+            const status = !friendReq ? 'false' : 'true'
+            // if so, assign from to id request came from
+            const from = friendReq ? friendReq.from : null
+
+            return res.json({ status, from })
+        }
+
         // console.log('GETTING FRIEND REQUESTS')
         const friendRequests = await FriendRequest.find({ $or: [{ from: req.params.id }, { to: req.params.id }] }).populate('from to', 'name')
         return res.json(friendRequests)
