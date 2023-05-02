@@ -4,6 +4,7 @@ const express = require('express');
 const router = express.Router();
 const usersCtrl = require('../../controllers/api/users');
 const ensureLoggedIn = require('../../config/ensureLoggedIn');
+const compareIds = require('../../config/compareIds')
 
 router.get('/', usersCtrl.search)
 
@@ -13,16 +14,16 @@ router.get('/', usersCtrl.search)
 router.get('/:id', usersCtrl.getInfo)
 
 // try to add friend
-router.post('/:userId/friends/:friendId', ensureLoggedIn, usersCtrl.addFriend)
+router.post('/:userId/friends/:friendId', ensureLoggedIn, compareIds, usersCtrl.addFriend)
 
 // try to send friend request
-router.post('/:userId/requests/:friendId', ensureLoggedIn, usersCtrl.addFriendRequest)
+router.post('/:userId/requests/:friendId', ensureLoggedIn, compareIds, usersCtrl.addFriendRequest)
 
 // try to remove friend
-router.delete('/:userId/friends/:friendId', ensureLoggedIn, usersCtrl.removeFriend)
+router.delete('/:userId/friends/:friendId', ensureLoggedIn, compareIds, usersCtrl.removeFriend)
 
 // try to remove friend request
-router.delete('/:userId/requests/:friendId', ensureLoggedIn, usersCtrl.removeFriendRequest)
+router.delete('/:userId/requests/:friendId', ensureLoggedIn, compareIds, usersCtrl.removeFriendRequest)
 
 router.post('/', usersCtrl.create);
 

@@ -155,11 +155,43 @@ async function update(req, res)
 
 async function addFriend(req, res)
 {
+    const { userId, friendId } = req.params
+
+    if (userId === friendId)
+    {
+        return res.json('CANNOT ADD YOURSELF AS A FRIEND')
+    }
+
+    const friendshipExists = await Friend.exists(
+        {
+            $or: [
+                { $and: [{ user_1: userId }, { user_2: friendId }] },
+                { $and: [{ user_1: friendId }, { user_2: userId }] }
+            ]
+        }
+    )
+    console.log(friendshipExists)
+
+    if (friendshipExists)
+    {
+        return res.json('FRIENDSHIP EXISTS - CAN NOT ADD FRIEND AGAIN')
+    }
+
     res.json('ADD FRIEND')
 }
 
 async function addFriendRequest(req, res)
 {
+    const { userId, friendId } = req.params
+    const friendRequestExists = await FriendRequest.exists(
+        {
+            $or: [
+                { $and: [{ from: userId }, { to: friendId }] },
+                { $and: [{ from: friendId }, { to: userId }] }
+            ]
+        }
+    )
+    console.log(friendRequestExists)
     res.json('ADD FRIEND REQUEST')
 }
 
