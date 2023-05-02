@@ -1,9 +1,9 @@
 //* Routing Logic
 
-const express = require('express');
-const router = express.Router();
-const usersCtrl = require('../../controllers/api/users');
-const ensureLoggedIn = require('../../config/ensureLoggedIn');
+const express = require('express')
+const router = express.Router()
+const usersCtrl = require('../../controllers/api/users')
+const ensureLoggedIn = require('../../config/ensureLoggedIn')
 const compareIds = require('../../config/compareIds')
 
 router.get('/', usersCtrl.search)
@@ -25,12 +25,12 @@ router.delete('/:userId/friends/:friendId', ensureLoggedIn, compareIds, usersCtr
 // try to remove friend request
 router.delete('/:userId/requests/:friendId', ensureLoggedIn, compareIds, usersCtrl.removeFriendRequest)
 
-router.post('/', usersCtrl.create);
+router.post('/', usersCtrl.create)
 
-router.post('/login', usersCtrl.login);
+router.post('/login', usersCtrl.login)
 
-router.get('/check-token', ensureLoggedIn, usersCtrl.checkToken);
+router.get('/check-token', ensureLoggedIn, usersCtrl.checkToken)
 
 
 
-module.exports = router;
+module.exports = router

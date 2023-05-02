@@ -1,10 +1,10 @@
-const mongoose = require("mongoose");
+const mongoose = require("mongoose")
 
-const Schema = mongoose.Schema;
-const bcrypt = require('bcrypt');
+const Schema = mongoose.Schema
+const bcrypt = require('bcrypt')
 
 //* determines how much processing time it will take to perform the hash
-const SALT_ROUNDS = 6;  // 6 is a reasonable value
+const SALT_ROUNDS = 6  // 6 is a reasonable value
 
 const userSchema = new Schema({
   name: { type: String, required: true },
@@ -31,20 +31,20 @@ const userSchema = new Schema({
   // ? here, it is making sure the password is removed before returning JSON of the "user" instance to wherever userInstance.toJSON was called
   toJSON: function (doc, ret)
   {
-    delete ret.password;
-    return ret;
+    delete ret.password
+    return ret
   }
-});
+})
 
 //* Pre Hook
 userSchema.pre('save', async function (next)
 {
   // if password was NOT modified continue to the next middleware
-  if (!this.isModified('password')) return next();
+  if (!this.isModified('password')) return next()
 
   // update the password with the computed hash
   this.password = await bcrypt.hash(this.password, SALT_ROUNDS)
-  return next();
+  return next()
 })
 
-module.exports = mongoose.model("User", userSchema);
+module.exports = mongoose.model("User", userSchema)
