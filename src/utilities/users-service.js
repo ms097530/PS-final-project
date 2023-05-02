@@ -86,6 +86,7 @@ export function removeFriendRequest(userId, friendId)
     return usersApi.removeFriendRequest(userId, friendId)
 }
 
+
 export async function checkToken()
 {
     return usersApi.checkToken().then(dateStr => new Date(dateStr))

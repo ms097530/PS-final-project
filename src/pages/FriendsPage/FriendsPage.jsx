@@ -1,8 +1,8 @@
-import React from 'react'
+import Friends from '../../components/Friends/Friends'
 
-export default function FriendsPage()
+export default function FriendsPage({ loggedInUser })
 {
     return (
-        <div>FriendsPage</div>
+        <Friends userId={loggedInUser._id} isCompact={false} baseViewCount={10} viewStep={10} />
     )
 }

@@ -25,7 +25,7 @@ function App()
             {/*
              Profile Page will need to know who current user is, provided by props, and then fetch appropriate user profile info based on provided id 
             */}
-            <Route path='/users/:userId/friends' element={<FriendsPage />} />
+            <Route path='/users/:userId/friends' element={<FriendsPage loggedInUser={user} />} />
             <Route path='/users/:userId' element={<ProfilePage loggedInUser={user} />} />
           </Routes>
         </>

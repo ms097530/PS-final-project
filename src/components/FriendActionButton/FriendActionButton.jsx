@@ -1,9 +1,11 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import { addFriend, sendFriendRequest, removeFriend, removeFriendRequest } from '../../utilities/users-service'
 
 export default function FriendActionButton({ loggedInUser, profileId, friendRequestStatus })
 {
     const { areFriends, requestStatus, from } = friendRequestStatus
+    const navigate = useNavigate()
 
     // ? if not friends, show "Add friend"
     // ? if friends already, show "Unfriend"
@@ -35,6 +37,7 @@ export default function FriendActionButton({ loggedInUser, profileId, friendRequ
     {
         const result = await btnAction(loggedInUser._id, profileId)
         console.log(result)
+        navigate(0)
     }
 
     // onClick functionality should vary based on determined status - change what is sent to sendRequest
