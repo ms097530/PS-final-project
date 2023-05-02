@@ -126,7 +126,7 @@ async function getInfo(req, res)
             })
 
             // is there a friend request between the two?
-            const status = !friendReq ? 'false' : 'true'
+            const status = !friendReq ? false : true
             // if so, assign from to id request came from
             const from = friendReq ? friendReq.from : null
 
@@ -138,7 +138,8 @@ async function getInfo(req, res)
         return res.json(friendRequests)
     }
 
-    // get matching user profile and user name/id
+
+    // * DEFAULT: get matching user profile and user name/id
     // console.log('GETTING USER DATA')
     const profile = await Profile.findOne({ user: req.params.id }).populate('user', 'name')
     console.log(profile)
@@ -146,12 +147,32 @@ async function getInfo(req, res)
 }
 
 // ? create separate route and controller for friend operations and keep this for general updates?
-
 // * refactoring user model should make updates easier - no longer need to worry about updating or not updating friends/requests
 async function update(req, res)
 {
 
 }
+
+async function addFriend(req, res)
+{
+    res.json('ADD FRIEND')
+}
+
+async function addFriendRequest(req, res)
+{
+    res.json('ADD FRIEND REQUEST')
+}
+
+async function removeFriend(req, res)
+{
+    res.json('REMOVE FRIEND')
+}
+
+async function removeFriendRequest(req, res)
+{
+    res.json('REMOVE FRIEND REQUEST')
+}
+
 
 
 async function checkToken(req, res)
@@ -167,5 +188,9 @@ module.exports = {
     search,
     getInfo,
     update,
+    addFriend,
+    addFriendRequest,
+    removeFriend,
+    removeFriendRequest,
     checkToken
 }

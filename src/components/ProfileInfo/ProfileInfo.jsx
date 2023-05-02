@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import Friends from '../Friends/Friends'
+import FriendActionButton from '../FriendActionButton/FriendActionButton'
 import { getUserInfo } from '../../utilities/users-service'
 
 export default function ProfileInfo({ loggedInUser, profile })
@@ -11,8 +12,10 @@ export default function ProfileInfo({ loggedInUser, profile })
 
     const [areFriends, setAreFriends] = useState(null)
     const [friendRequestExists, setFriendRequestExists] = useState(null)
+    // const [isUsersProfile, setIsUsersProfile] = useState(loggedInUser._id === profile.user._id)
 
     const isUsersProfile = loggedInUser._id === profile.user._id
+
 
     useEffect(() =>
     {
@@ -39,28 +42,6 @@ export default function ProfileInfo({ loggedInUser, profile })
     }, [loggedInUser, profile, isUsersProfile])
 
     // console.log(isUsersProfile)
-    // button representing current friendship state
-    // ? if not friends, show "Add friend"
-    // ? if friends already, show "Unfriend"
-    // ? if friend request sent, show "Pending"
-    // ? if friend request received, show "Accept"
-    let btnText
-    if (areFriends)
-        btnText = 'Unfriend'
-    else if (friendRequestExists.status === 'false')
-        btnText = 'Add Friend'
-    else if (friendRequestExists.from === loggedInUser._id)
-        btnText = 'Pending'
-    else
-        btnText = 'Accept'
-
-
-    const friendBtn =
-        (
-            <button>
-                {btnText}
-            </button>
-        )
 
     return (
         <>
@@ -69,7 +50,14 @@ export default function ProfileInfo({ loggedInUser, profile })
                     alt={`${profile?.user.name} profile`} />
             </div>
             <div>
-                {!isUsersProfile && friendBtn}
+                {
+                    // only render if not on users own profile and request data has been retrieved
+                    !isUsersProfile && friendRequestExists &&
+                    <FriendActionButton
+                        loggedInUser={loggedInUser}
+                        profileId={profile.user._id}
+                        friendRequestStatus={{ ...friendRequestExists, areFriends, requestStatus: friendRequestExists.status }} />
+                }
             </div>
             <h2>
                 {profile?.user?.name}

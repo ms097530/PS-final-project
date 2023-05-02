@@ -66,6 +66,26 @@ export function getUserInfo(userId, query = '')
     return usersApi.getUserInfo(userId, query)
 }
 
+export function addFriend(userId, friendId)
+{
+    return usersApi.addFriend(userId, friendId)
+}
+
+export function removeFriend(userId, friendId)
+{
+    return usersApi.removeFriend(userId, friendId)
+}
+
+export function sendFriendRequest(userId, friendId)
+{
+    return usersApi.sendFriendRequest(userId, friendId)
+}
+
+export function removeFriendRequest(userId, friendId)
+{
+    return usersApi.removeFriendRequest(userId, friendId)
+}
+
 export async function checkToken()
 {
     return usersApi.checkToken().then(dateStr => new Date(dateStr))
