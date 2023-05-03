@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { getUserInfo } from '../../utilities/users-service'
 import Friend from '../User/User'
+import styles from './Friends.module.css'
 
 // baseViewCount = how many friends to show by default
 // viewStep = how many more friends get shown when clicking "Show more..."
@@ -29,7 +30,7 @@ export default function Friends({ userId, isCompact, baseViewCount, viewStep })
     }, [userId])
 
     return (
-        <div>
+        <div className={styles.Friends}>
             {
                 friends.length <= 0 ? 'No friends to be found :('
                     : friends.map(friend => <Friend key={friend._id} user={friend} isCompact={isCompact} />)

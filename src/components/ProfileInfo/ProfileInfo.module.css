@@ -1,0 +1,13 @@
+.imgContainer
+{
+    width: 300px;
+    height: 300px;
+    margin-inline: auto;
+}
+
+.profileImg
+{
+    max-width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

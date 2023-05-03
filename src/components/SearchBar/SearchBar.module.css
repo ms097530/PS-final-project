@@ -3,3 +3,9 @@
     display: inline-block;
     margin-right: 1rem;
 }
+
+.SearchBar input
+{
+    min-height: 30px;
+    font-size: 14px;
+}

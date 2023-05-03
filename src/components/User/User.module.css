@@ -1,3 +1,10 @@
+.User h3,
+.User a
+{
+    color: black;
+    text-decoration: none;
+}
+
 .userImg
 {
     aspect-ratio: 1 / 1;

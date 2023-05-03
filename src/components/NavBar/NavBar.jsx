@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { logOut } from "../../utilities/users-service";
 import SearchBar from "../SearchBar/SearchBar";
+import styles from './NavBar.module.css'
 
 function NavBar({ user, setUser })
 {
@@ -10,7 +11,7 @@ function NavBar({ user, setUser })
     setUser(null);
   };
   return (
-    <nav>
+    <nav className={styles.NavBar}>
       <SearchBar />
       <Link to={`/users/${user._id}/friends`}>Friends</Link>
       &nbsp; | &nbsp;

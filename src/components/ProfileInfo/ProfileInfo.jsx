@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import Friends from '../Friends/Friends'
 import FriendActionButton from '../FriendActionButton/FriendActionButton'
 import { getUserInfo } from '../../utilities/users-service'
+import styles from './ProfileInfo.module.css'
 
 export default function ProfileInfo({ loggedInUser, profile })
 {
@@ -45,8 +46,9 @@ export default function ProfileInfo({ loggedInUser, profile })
 
     return (
         <>
-            <div>
-                <img src={profile?.profileImgUrl}
+            <div className={styles.imgContainer}>
+                <img className={styles.profileImg}
+                    src={profile?.profileImgUrl}
                     alt={`${profile?.user.name} profile`} />
             </div>
             <div>
@@ -65,7 +67,11 @@ export default function ProfileInfo({ loggedInUser, profile })
             <h2>
                 {profile?.headline}
             </h2>
-            <Friends userId={profile.user._id} isCompact={true} />
+
+            <div>
+                <h3>FRIENDS</h3>
+                <Friends userId={profile.user._id} isCompact={true} />
+            </div>
         </>
     )
 }
