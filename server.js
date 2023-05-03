@@ -1,3 +1,4 @@
+// ! DO NOT REMOVE SEMICOLONS AFTER NON-ASSIGNED REQUIRES ! \\
 require('dotenv').config();
 require('./config/database'); // connects to db
 const express = require('express');
