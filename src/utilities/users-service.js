@@ -86,6 +86,11 @@ export function removeFriendRequest(userId, friendId)
     return usersApi.removeFriendRequest(userId, friendId)
 }
 
+export function userSearch(name)
+{
+    return usersApi.userSearch(name)
+}
+
 
 export async function checkToken()
 {

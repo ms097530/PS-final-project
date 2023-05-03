@@ -49,6 +49,11 @@ export function removeFriendRequest(userId, friendId)
   return sendFriendRequest(`${BASE_URL}/${userId}/requests/${friendId}`, 'DELETE')
 }
 
+export function userSearch(name)
+{
+  return sendRequest(`${BASE_URL}?name=${name}`)
+}
+
 
 //* Check Token
 export function checkToken()
