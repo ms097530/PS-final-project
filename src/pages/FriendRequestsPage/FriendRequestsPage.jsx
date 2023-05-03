@@ -12,7 +12,8 @@ export default function FriendRequestsPage({ loggedInUser })
         async function getFriendRequests()
         {
             const foundRequests = await getUserInfo(loggedInUser._id, 'type=freq')
-            setFriendRequests(foundRequests)
+            const requestsToUser = foundRequests.filter(request => request.to === loggedInUser._id)
+            setFriendRequests(requestsToUser)
         }
         getFriendRequests()
     }, [loggedInUser])

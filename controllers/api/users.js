@@ -232,7 +232,9 @@ async function addFriendRequest(req, res)
         return res.json('REQUEST ALREADY EXISTS')
     }
 
-    res.json('ADD FRIEND REQUEST')
+    const friendRequest = await FriendRequest.create({ from: userId, to: friendId })
+
+    res.json({ message: 'ADD FRIEND REQUEST', friendRequest })
 }
 
 async function removeFriend(req, res)
