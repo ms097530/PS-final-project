@@ -1,0 +1,17 @@
+.userImg
+{
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.compact
+{
+    height: 125px;
+}
+
+.normal
+{
+    height: 200px;
+
+}

@@ -1,4 +1,4 @@
-
+https://stackoverflow.com/questions/35352638/how-to-get-parameter-value-from-query-string
 
 https://stackoverflow.com/questions/18867628/mongoose-deep-population-populate-a-populated-field
 
