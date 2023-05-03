@@ -9,3 +9,7 @@ https://stackoverflow.com/questions/7101703/how-do-i-make-case-insensitive-queri
 https://stackoverflow.com/questions/9598505/mongoose-retrieving-data-without-id-field
 
 https://stackoverflow.com/questions/33007878/nodejs-typeerror-require-is-not-a-function
+
+https://stackoverflow.com/questions/46820682/how-do-i-reload-a-page-with-react-router
+
+https://www.educative.io/answers/what-is-exists-in-mongoose
