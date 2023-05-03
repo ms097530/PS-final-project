@@ -29,15 +29,15 @@ const FriendRequest = require('./models/friendRequest');
     ])
 
     const profiles = await Profile.create([
-        { user: users[0]._id, profileImgUrl: 'https://www.pngkit.com/png/detail/399-3999228_random-guy-pixel-art.png', bannerImgUrl: BANNER_DEFAULT },
-        { user: users[1]._id, profileImgUrl: 'https://www.shutterstock.com/image-photo/male-scientist-doing-scientific-experiment-260nw-163057715.jpg', bannerImgUrl: BANNER_DEFAULT },
-        { user: users[2]._id, profileImgUrl: 'https://www.usmagazine.com/wp-content/uploads/2022/12/Brendan-Fraser-Reveals-He-Starved-Himself-While-Filming-George-of-the-Jungle-My-Brain-Was-Misfiring-749.jpg?w=1200&quality=86&strip=all', bannerImgUrl: BANNER_DEFAULT },
-        { user: users[3]._id, profileImgUrl: 'https://ih1.redbubble.net/image.325497984.2626/flat,750x,075,f-pad,750x1000,f8f8f8.u1.jpg', bannerImgUrl: BANNER_DEFAULT },
-        { user: users[4]._id, profileImgUrl: 'https://www.thetimes.co.uk/imageserver/image/%2Fmethode%2Fsundaytimes%2Fprod%2Fweb%2Fbin%2Fe6496bba-3356-11ec-91da-063c6e372e74.jpg?crop=2667%2C1500%2C0%2C0', bannerImgUrl: BANNER_DEFAULT },
-        { user: users[5]._id, profileImgUrl: 'https://heroichollywood.com/wp-content/uploads/2018/12/Optimus-Prime-Transformers.jpg', bannerImgUrl: BANNER_DEFAULT },
-        { user: users[6]._id, profileImgUrl: 'https://pbs.twimg.com/media/FluQSYAWYAE9inQ.jpg', bannerImgUrl: BANNER_DEFAULT },
-        { user: users[7]._id, profileImgUrl: 'https://i.pinimg.com/originals/90/2b/e3/902be36a715e711bd174f63f28a47750.jpg', bannerImgUrl: BANNER_DEFAULT },
-        { user: users[8]._id, profileImgUrl: 'https://www.gamespot.com/a/uploads/original/1601/16018044/4006454-ichiban-1.jpg', bannerImgUrl: BANNER_DEFAULT }
+        { user: users[0]._id, profileImgUrl: 'https://www.pngkit.com/png/detail/399-3999228_random-guy-pixel-art.png', bannerImgUrl: BANNER_DEFAULT, headline: 'Just a guy' },
+        { user: users[1]._id, profileImgUrl: 'https://www.shutterstock.com/image-photo/male-scientist-doing-scientific-experiment-260nw-163057715.jpg', bannerImgUrl: BANNER_DEFAULT, headline: 'Running tests is my purpose' },
+        { user: users[2]._id, profileImgUrl: 'https://www.usmagazine.com/wp-content/uploads/2022/12/Brendan-Fraser-Reveals-He-Starved-Himself-While-Filming-George-of-the-Jungle-My-Brain-Was-Misfiring-749.jpg?w=1200&quality=86&strip=all', bannerImgUrl: BANNER_DEFAULT, headline: 'GEORGE' },
+        { user: users[3]._id, profileImgUrl: 'https://ih1.redbubble.net/image.325497984.2626/flat,750x,075,f-pad,750x1000,f8f8f8.u1.jpg', bannerImgUrl: BANNER_DEFAULT, headline: 'WHO THE HELL DO YOU THINK I AM?!?!' },
+        { user: users[4]._id, profileImgUrl: 'https://www.thetimes.co.uk/imageserver/image/%2Fmethode%2Fsundaytimes%2Fprod%2Fweb%2Fbin%2Fe6496bba-3356-11ec-91da-063c6e372e74.jpg?crop=2667%2C1500%2C0%2C0', bannerImgUrl: BANNER_DEFAULT, headline: 'Never gonna give you up' },
+        { user: users[5]._id, profileImgUrl: 'https://heroichollywood.com/wp-content/uploads/2018/12/Optimus-Prime-Transformers.jpg', bannerImgUrl: BANNER_DEFAULT, headline: 'Roll out!' },
+        { user: users[6]._id, profileImgUrl: 'https://pbs.twimg.com/media/FluQSYAWYAE9inQ.jpg', bannerImgUrl: BANNER_DEFAULT, headline: 'I\'ll just put something here...' },
+        { user: users[7]._id, profileImgUrl: 'https://i.pinimg.com/originals/90/2b/e3/902be36a715e711bd174f63f28a47750.jpg', bannerImgUrl: BANNER_DEFAULT, headline: 'Gurren Lagann pilot 😎' },
+        { user: users[8]._id, profileImgUrl: 'https://www.gamespot.com/a/uploads/original/1601/16018044/4006454-ichiban-1.jpg', bannerImgUrl: BANNER_DEFAULT, headline: 'Ijincho\'s number one hero!' }
     ])
 
     users[0].profile = profiles[0]._id
