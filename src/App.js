@@ -1,12 +1,13 @@
 import { useState } from 'react';
 
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 
 import AuthPage from './pages/AuthPage/AuthPage';
 import NavBar from './components/NavBar/NavBar';
 import ProfilePage from './pages/ProfilePage/ProfilePage';
 import FriendsPage from './pages/FriendsPage/FriendsPage';
 import FriendRequestsPage from './pages/FriendRequestsPage/FriendRequestsPage'
+import SearchResultsPage from './pages/SearchResultsPage/SearchResultsPage';
 
 import { getUser } from './utilities/users-service';
 
@@ -29,6 +30,9 @@ function App()
             <Route path='/users/:userId/friends' element={<FriendsPage loggedInUser={user} />} />
             <Route path='/users/:userId/requests' element={<FriendRequestsPage loggedInUser={user} />} />
             <Route path='/users/:userId' element={<ProfilePage loggedInUser={user} />} />
+            <Route path='/users/search' element={<SearchResultsPage />} />
+
+            <Route path="*" element={<Navigate to={`/users/${user._id}`} />} />
           </Routes>
         </>
         :
