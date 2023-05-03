@@ -118,9 +118,10 @@ async function getInfo(req, res)
         return res.json(friends)
     }
 
-    // get friend requests
+    // get friend requests to the user from req params by default
     if (req.query.type === 'freq')
     {
+        // if user provided in query, check if there is a friend request existing between the two users
         if (req.query.user)
         {
             // console.log('CHECKING IF FRIENDS')
@@ -143,7 +144,7 @@ async function getInfo(req, res)
         // console.log('GETTING FRIEND REQUESTS')
         const friendRequests = await FriendRequest.find({ $or: [{ from: req.params.id }, { to: req.params.id }] }).populate([
             {
-                path: 'from to',
+                path: 'from',
                 select: 'name',
                 populate: [
                     {
