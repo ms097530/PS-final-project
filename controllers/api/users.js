@@ -6,6 +6,8 @@ const FriendRequest = require('../../models/friendRequest')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
 
+
+
 //* /*-- Helper Functions --*/
 function createJWT(user)
 {
@@ -55,6 +57,7 @@ async function login(req, res)
     }
 }
 
+// search for users based on name provided in query
 async function search(req, res)
 {
     // return users in db with name that starts with query name
@@ -69,7 +72,11 @@ async function search(req, res)
     res.json(users)
 }
 
-
+// ***** USED TO GET SPECIFIC USER INFO BY DEFAULT *****
+// ***** USED TO GET SPECIFIC USER'S FRIEND INFO WITH type=fr *****
+// ***** USED TO GET SPECIFIC USER'S FRIEND REQUEST INFO WITH type=freq *****
+// ***** with type=freq and user=someUserId can retrive if user making request
+// ***** is friends with user provided in query *****
 async function getInfo(req, res)
 {
     console.log(req.params)
@@ -164,6 +171,7 @@ async function update(req, res)
 
 }
 
+// ****** FRIEND AND FRIEND REQUEST HANDLERS *****
 async function addFriend(req, res)
 {
     const { userId, friendId } = req.params
@@ -228,14 +236,26 @@ async function addFriendRequest(req, res)
 
 async function removeFriend(req, res)
 {
+    const { userId, friendId } = req.params
+    const removed = await Friend.findOneAndDelete(
+        {
+            $or: [
+                { $and: [{ user_1: userId }, { user_2: friendId }] },
+                { $and: [{ user_1: friendId }, { user_2: userId }] }
+            ]
+        }
+    )
 
-
-    res.json('REMOVE FRIEND')
+    res.json({ message: 'FRIEND REMOVED', removed })
 }
 
 async function removeFriendRequest(req, res)
 {
-    res.json('REMOVE FRIEND REQUEST')
+    const { userId, friendId } = req.params
+
+    const removed = await FriendRequest.findOneAndDelete({ from: userId, to: friendId })
+
+    res.json({ message: 'REMOVE FRIEND REQUEST', removed })
 }
 
 

@@ -70,7 +70,10 @@ COMMENTS
 POST:
 comments: [ { id: 1, replies: [{id :2, replies: [] }, 3, 4] }, {id: 5, replies
 
-
+image sizes:
+profile: 250px / 250px
+compact: 150px / 150px
+non-compact: 200px / 200px
 
 
 
