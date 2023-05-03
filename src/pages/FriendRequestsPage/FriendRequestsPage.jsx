@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import { getUserInfo } from '../../utilities/users-service'
-import Friend from '../../components/Friend/Friend'
+import Friend from '../../components/User/User'
 
 export default function FriendRequestsPage({ loggedInUser })
 {

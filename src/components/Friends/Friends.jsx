@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { getUserInfo } from '../../utilities/users-service'
-import Friend from '../Friend/Friend'
+import Friend from '../User/User'
 
 // baseViewCount = how many friends to show by default
 // viewStep = how many more friends get shown when clicking "Show more..."
@@ -32,7 +32,7 @@ export default function Friends({ userId, isCompact, baseViewCount, viewStep })
         <div>
             {
                 friends.length <= 0 ? 'No friends to be found :('
-                    : friends.map(friend => <Friend key={friend._id} friend={friend} isCompact={isCompact} />)
+                    : friends.map(friend => <Friend key={friend._id} user={friend} isCompact={isCompact} />)
             }
         </div>
     )

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { logOut } from "../../utilities/users-service";
+import SearchBar from "../SearchBar/SearchBar";
 
 function NavBar({ user, setUser })
 {
@@ -10,6 +11,7 @@ function NavBar({ user, setUser })
   };
   return (
     <nav>
+      <SearchBar />
       <Link to={`/users/${user._id}/friends`}>Friends</Link>
       &nbsp; | &nbsp;
       <Link to={`/users/${user._id}/requests`}>Friend Requests</Link>
