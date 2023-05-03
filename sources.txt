@@ -7,3 +7,5 @@ https://stackoverflow.com/questions/7382207/mongooses-find-method-with-or-condit
 https://stackoverflow.com/questions/7101703/how-do-i-make-case-insensitive-queries-on-mongodb/7101938#7101938
 
 https://stackoverflow.com/questions/9598505/mongoose-retrieving-data-without-id-field
+
+https://stackoverflow.com/questions/33007878/nodejs-typeerror-require-is-not-a-function

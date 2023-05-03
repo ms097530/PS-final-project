@@ -134,7 +134,18 @@ async function getInfo(req, res)
         }
 
         // console.log('GETTING FRIEND REQUESTS')
-        const friendRequests = await FriendRequest.find({ $or: [{ from: req.params.id }, { to: req.params.id }] }).populate('from to', 'name')
+        const friendRequests = await FriendRequest.find({ $or: [{ from: req.params.id }, { to: req.params.id }] }).populate([
+            {
+                path: 'from to',
+                select: 'name',
+                populate: [
+                    {
+                        path: 'profile',
+                        select: 'profileImgUrl -_id'
+                    }
+                ]
+            }
+        ])
         return res.json(friendRequests)
     }
 
@@ -157,11 +168,6 @@ async function addFriend(req, res)
 {
     const { userId, friendId } = req.params
 
-    if (userId === friendId)
-    {
-        return res.json('CANNOT ADD YOURSELF AS A FRIEND')
-    }
-
     const friendshipExists = await Friend.exists(
         {
             $or: [
@@ -177,7 +183,26 @@ async function addFriend(req, res)
         return res.json('FRIENDSHIP EXISTS - CAN NOT ADD FRIEND AGAIN')
     }
 
-    res.json('ADD FRIEND')
+    const friendRequest = await FriendRequest.findOne(
+        {
+            $or: [
+                { $and: [{ from: userId }, { to: friendId }] },
+                { $and: [{ from: friendId }, { to: userId }] }
+            ]
+        }
+    )
+
+    if (!friendRequest)
+    {
+        return res.json({ message: 'FRIEND REQUEST NEEDED - CAN NOT ADD FRIEND' })
+    }
+
+    const friend = await Friend.create({ user_1: userId, user_2: friendId })
+    const removedFr = await friendRequest.remove()
+
+    console.log('Removed FR: ', removedFr)
+
+    res.json({ message: 'ADDED FRIEND', friend })
 }
 
 async function addFriendRequest(req, res)
@@ -192,11 +217,19 @@ async function addFriendRequest(req, res)
         }
     )
     console.log(friendRequestExists)
+
+    if (friendRequestExists)
+    {
+        return res.json('REQUEST ALREADY EXISTS')
+    }
+
     res.json('ADD FRIEND REQUEST')
 }
 
 async function removeFriend(req, res)
 {
+
+
     res.json('REMOVE FRIEND')
 }
 

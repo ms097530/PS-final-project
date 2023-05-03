@@ -1,4 +1,6 @@
 const mongoose = require("mongoose")
+// const Friend = require('./friend')
+// const FriendRequest = require('./friendRequest')
 
 const Schema = mongoose.Schema
 const bcrypt = require('bcrypt')
@@ -46,5 +48,15 @@ userSchema.pre('save', async function (next)
   this.password = await bcrypt.hash(this.password, SALT_ROUNDS)
   return next()
 })
+
+// userSchema.methods.addFriend = async function (friendId)
+// {
+//   console.log('INVOKED ADD FRIEND')
+//   // create new friend
+//   const friend = await Friend.create({ user_1: this._id, user_2: friendId })
+//   // remove friend request
+
+//   return friend
+// }
 
 module.exports = mongoose.model("User", userSchema)
