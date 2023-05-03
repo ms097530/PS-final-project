@@ -6,7 +6,7 @@ import { userSearch } from '../../utilities/users-service'
 export default function SearchResultsPage()
 {
     const [users, setUsers] = useState(null)
-    const [searchParams, setSearchParams] = useSearchParams()
+    const searchParams = useSearchParams()[0]
 
     useEffect(() =>
     {
