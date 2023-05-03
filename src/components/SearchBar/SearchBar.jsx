@@ -13,6 +13,7 @@ export default function SearchBar({ loggedInUser })
         if (inputRef.current.value.length > 0)
         {
             navigate(`/users/search?name=${inputRef.current.value}`)
+            inputRef.current.value = ''
             console.log('SEARCHING')
         }
     }
