@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import { getUserInfo } from '../../utilities/users-service'
-import Friend from '../../components/User/User'
+import User from '../../components/User/User'
 
 export default function FriendRequestsPage({ loggedInUser })
 {
@@ -22,7 +22,7 @@ export default function FriendRequestsPage({ loggedInUser })
         <div>
             {
                 friendRequests.length <= 0 ? <h2>No friend requests found</h2>
-                    : friendRequests.map(friendRequest => <Friend key={friendRequest.from._id} friend={friendRequest.from} isCompact={false} />)
+                    : friendRequests.map(friendRequest => <User key={friendRequest.from._id} user={friendRequest.from} isCompact={false} />)
             }
         </div>
     )
