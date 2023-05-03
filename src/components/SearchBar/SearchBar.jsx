@@ -1,5 +1,6 @@
 import React, { useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
+import styles from './SearchBar.module.css'
 
 export default function SearchBar({ loggedInUser })
 {
@@ -9,12 +10,15 @@ export default function SearchBar({ loggedInUser })
     const handleSubmit = (e) =>
     {
         e.preventDefault()
-        console.log('SEARCHING')
-        navigate(`/users/search?find=${inputRef.current.value}`)
+        if (inputRef.current.value.length > 0)
+        {
+            navigate(`/users/search?name=${inputRef.current.value}`)
+            console.log('SEARCHING')
+        }
     }
     return (
-        <form action="" onSubmit={handleSubmit}>
-            <input type="search" name="" id="" ref={inputRef} />
+        <form action="" onSubmit={handleSubmit} className={styles.SearchBar}>
+            <input type="search" name="searchUser" id="searchUser" ref={inputRef} />
         </form>
     )
 }
