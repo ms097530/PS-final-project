@@ -46,7 +46,7 @@ export function sendFriendRequest(userId, friendId)
 
 export function removeFriendRequest(userId, friendId)
 {
-  return sendFriendRequest(`${BASE_URL}/${userId}/requests/${friendId}`, 'DELETE')
+  return sendRequest(`${BASE_URL}/${userId}/requests/${friendId}`, 'DELETE')
 }
 
 export function userSearch(name)
