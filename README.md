@@ -28,6 +28,7 @@ This project is an early development social media site intended to be reminiscen
 - Allow for updating user password
 - Allow for updating profile information
 - Add posting and commenting functionality
+- Add customizable settings for profile and a settings page
 - Bells and whistles (styling)
 
 ## Sources
