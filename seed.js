@@ -73,7 +73,6 @@ const FriendRequest = require('./models/friendRequest');
     const friendRequests = await FriendRequest.create([
         { from: users[0]._id, to: users[2]._id },
         { from: users[0]._id, to: users[3]._id },
-        { from: users[0]._id, to: users[4]._id },
         { from: users[0]._id, to: users[5]._id },
         { from: users[0]._id, to: users[6]._id },
         { from: users[0]._id, to: users[7]._id },
