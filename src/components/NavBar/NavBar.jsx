@@ -12,6 +12,7 @@ function NavBar({ user, setUser })
   };
   return (
     <nav className={styles.NavBar}>
+      <h1>mikeSPACE</h1>
       <SearchBar />
       <Link to={`/users/${user._id}/friends`}>Friends</Link>
       &nbsp; | &nbsp;
