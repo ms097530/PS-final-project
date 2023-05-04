@@ -40,10 +40,27 @@ export default function FriendActionButton({ loggedInUser, profileId, friendRequ
         navigate(0)
     }
 
+    const reject = async () =>
+    {
+        const result = await removeFriendRequest(profileId, loggedInUser._id)
+        console.log(result)
+        navigate(0)
+    }
+
     // onClick functionality should vary based on determined status - change what is sent to sendRequest
     return (
-        <button onClick={handleClick}>
-            {btnText}
-        </button>
+        <div>
+            <button onClick={handleClick}>
+                {btnText}
+            </button>
+
+            {
+                btnText === 'Accept' &&
+                <button onClick={reject}>
+                    Decline
+                </button>
+            }
+
+        </div>
     )
 }
