@@ -22,7 +22,6 @@ This project is an early development social media site intended to be reminiscen
 ## Unsolved Problems
 
 - Need to limit amount of users being shown in different sections
-- Need to add button to decline friend request
 
 ## Future Enhancements
 - Allow for updating user password
