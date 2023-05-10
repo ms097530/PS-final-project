@@ -60,6 +60,9 @@ export default function ProfileInfo({ loggedInUser, profile })
                         profileId={profile.user._id}
                         friendRequestStatus={{ ...friendRequestExists, areFriends, requestStatus: friendRequestExists.status }} />
                 }
+                {
+                    isUsersProfile && <button>Edit</button>
+                }
             </div>
             <h2>
                 {profile?.user?.name}
@@ -67,6 +70,10 @@ export default function ProfileInfo({ loggedInUser, profile })
             <h2>
                 {profile?.headline}
             </h2>
+
+            {/* <div>
+                {profile?.faveSongUrl && <audio src={profile.faveSongUrl} type="audio/mpeg" />}
+            </div> */}
 
             <div>
                 <h3>FRIENDS</h3>
