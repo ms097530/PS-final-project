@@ -7,6 +7,7 @@ export default function FriendActionButton({ loggedInUser, profileId, friendRequ
     const { areFriends, requestStatus, from } = friendRequestStatus
     const navigate = useNavigate()
 
+    // onClick functionality should vary based on determined status - change what is sent to sendRequest
     // ? if not friends, show "Add friend"
     // ? if friends already, show "Unfriend"
     // ? if friend request sent, show "Pending"
@@ -47,7 +48,7 @@ export default function FriendActionButton({ loggedInUser, profileId, friendRequ
         navigate(0)
     }
 
-    // onClick functionality should vary based on determined status - change what is sent to sendRequest
+
     return (
         <div>
             <button onClick={handleClick}>
