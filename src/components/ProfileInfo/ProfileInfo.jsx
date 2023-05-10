@@ -61,6 +61,7 @@ export default function ProfileInfo({ loggedInUser, profile })
                         friendRequestStatus={{ ...friendRequestExists, areFriends, requestStatus: friendRequestExists.status }} />
                 }
                 {
+                    // if on own profile, enable editing mode
                     isUsersProfile && <button>Edit</button>
                 }
             </div>

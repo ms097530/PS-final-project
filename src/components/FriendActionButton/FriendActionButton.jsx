@@ -13,6 +13,11 @@ export default function FriendActionButton({ loggedInUser, profileId, friendRequ
     // ? if friend request sent, show "Pending"
     // ? if friend request received, show "Accept"
     let btnText, btnAction
+    // if (loggedInUser._id === profileId)
+    // {
+    //     btnText = 'Edit'
+    //     btnAction = editUser
+    // }
     if (areFriends)
     {
         btnText = 'Unfriend'

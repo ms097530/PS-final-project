@@ -66,6 +66,12 @@ export function getUserInfo(userId, query = '')
     return usersApi.getUserInfo(userId, query)
 }
 
+export function editUser(userId, payload)
+{
+    console.log('EDITING USER')
+    console.log(userId, payload)
+}
+
 export function addFriend(userId, friendId)
 {
     return usersApi.addFriend(userId, friendId)
