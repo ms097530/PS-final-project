@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import Friends from '../Friends/Friends'
 import FriendActionButton from '../FriendActionButton/FriendActionButton'
 import { getUserInfo } from '../../utilities/users-service'
@@ -62,7 +63,7 @@ export default function ProfileInfo({ loggedInUser, profile })
                 }
                 {
                     // if on own profile, enable editing mode
-                    isUsersProfile && <button>Edit</button>
+                    isUsersProfile && <Link to={`/users/${loggedInUser._id}/edit`}><button>Edit</button></Link>
                 }
             </div>
             <h2>
