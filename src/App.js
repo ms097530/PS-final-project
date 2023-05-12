@@ -32,7 +32,7 @@ function App()
             <Route path='/users/:userId/requests' element={<FriendRequestsPage loggedInUser={user} />} />
             <Route path='/users/:userId' element={<ProfilePage loggedInUser={user} />} />
             <Route path='/users/search' element={<SearchResultsPage />} />
-            <Route path='/users/:userId/edit' element={<EditUserPage />} />
+            <Route path='/users/:userId/edit' element={<EditUserPage loggedInUser={user} />} />
 
             <Route path="*" element={<Navigate to={`/users/${user._id}`} />} />
           </Routes>
