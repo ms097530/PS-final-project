@@ -76,6 +76,10 @@ compact: 150px / 150px
 non-compact: 200px / 200px
 
 
+STORING DATA:
+- store headline and about section using rich text editor
+  - these will be stored in the form of a string of markup from ReactQuill
+  - then use html-react-parser to parse retrieved string
 
 
 
