@@ -68,7 +68,7 @@ COMMENTS
 
 
 POST:
-comments: [ { id: 1, replies: [{id :2, replies: [] }, 3, 4] }, {id: 5, replies
+comments: [ { id: 1, replies: [{id :2, replies: [] }, 3, 4] }, {id: 5, replies } ]
 
 image sizes:
 profile: 250px / 250px
