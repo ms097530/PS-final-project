@@ -22,12 +22,17 @@ export default function EditProfilePage({ loggedInUser })
         }
     }, [loggedInUser, userId, navigate])
 
+    const handleChange = (val, name) =>
+    {
+        setProfileInfo(prevInfo => { return { ...prevInfo, [name]: val } })
+    }
+
     return (
         <>
             <div>Edit Profile Page</div>
-            <Quill theme="snow" value={profileInfo.headline} onChange={setProfileInfo} style={{ marginBottom: '2rem' }} placeholder='Your headline here...' modules={{ toolbar: { link: false } }} />
+            <Quill theme="snow" name="headline" value={profileInfo.headline} onChange={(value) => handleChange(value, 'headline')} style={{ marginBottom: '2rem' }} placeholder='Your headline here...' modules={{ toolbar: { link: false } }} />
             {Parser(profileInfo.headline)}
-            <Quill theme="snow" value={profileInfo.about} onChange={setProfileInfo} style={{ marginBottom: '2rem' }} placeholder='All about you...' modules={{ toolbar: { link: false } }} />
+            <Quill theme="snow" name="about" value={profileInfo.about} onChange={(value) => handleChange(value, 'about')} style={{ marginBottom: '2rem' }} placeholder='All about you...' modules={{ toolbar: { link: false } }} />
         </>
     )
 }
