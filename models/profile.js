@@ -14,6 +14,12 @@ const profileSchema = new Schema({
         default: '',
         trim: true
     },
+    about:
+    {
+        type: String,
+        default: '',
+        trim: true
+    },
     profileImgUrl:
     {
         type: String,
