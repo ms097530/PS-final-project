@@ -9,7 +9,7 @@ import Parser from 'html-react-parser'
 
 export default function EditProfilePage({ loggedInUser })
 {
-    const [value, setValue] = useState('')
+    const [headline, setHeadline] = useState('')
     const { userId } = useParams()
     const navigate = useNavigate()
 
@@ -25,8 +25,8 @@ export default function EditProfilePage({ loggedInUser })
     return (
         <>
             <div>Edit Profile Page</div>
-            <Quill theme="snow" value={value} onChange={setValue} style={{}} placeholder='Your headline here...' modules={{ toolbar: { link: false } }} />
-            {Parser(value)}
+            <Quill theme="snow" value={headline} onChange={setHeadline} style={{}} placeholder='Your headline here...' modules={{ toolbar: { link: false } }} />
+            {Parser(headline)}
         </>
     )
 }
