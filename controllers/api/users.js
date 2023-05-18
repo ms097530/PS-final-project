@@ -22,6 +22,9 @@ async function create(req, res)
         //* creating a new user and associating new profile with the created user
         const user = await User.create(req.body)
         const userProfile = await Profile.create({ user: user._id })
+        user.profile = userProfile._id
+        await user.save()
+
         // console.log(user)
         console.log(userProfile)
 
