@@ -27,6 +27,7 @@ export default function EditProfilePage({ loggedInUser })
             <div>Edit Profile Page</div>
             <Quill theme="snow" value={headline} onChange={setHeadline} style={{}} placeholder='Your headline here...' modules={{ toolbar: { link: false } }} />
             {Parser(headline)}
+            <Quill theme="snow" value={headline} onChange={setHeadline} style={{}} placeholder='Your headline here...' modules={{ toolbar: { link: false } }} />
         </>
     )
 }
