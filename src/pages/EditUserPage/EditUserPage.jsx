@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import ReactQuill from 'react-quill'
+import Quill from 'react-quill'
 // import 'react-quill/dist/quill.core.css'
-// import 'react-quill/dist/quill.snow.css'
-import 'react-quill/dist/quill.bubble.css'
+import 'react-quill/dist/quill.snow.css'
+// import 'react-quill/dist/quill.bubble.css'
 import Parser from 'html-react-parser'
 
 
@@ -25,7 +25,7 @@ export default function EditProfilePage({ loggedInUser })
     return (
         <>
             <div>Edit Profile Page</div>
-            <ReactQuill theme="bubble" value={value} onChange={setValue} style={{ width: '300px', border: '1px solid white' }} />
+            <Quill theme="snow" value={value} onChange={setValue} style={{}} placeholder='Your headline here...' modules={{ toolbar: { link: false } }} />
             {Parser(value)}
         </>
     )
