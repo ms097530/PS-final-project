@@ -27,12 +27,19 @@ export default function EditProfilePage({ loggedInUser })
         setProfileInfo(prevInfo => { return { ...prevInfo, [name]: val } })
     }
 
+    const submitChanges = (e) =>
+    {
+
+    }
+
     return (
         <>
             <div>Edit Profile Page</div>
             <Quill theme="snow" name="headline" value={profileInfo.headline} onChange={(value) => handleChange(value, 'headline')} style={{ marginBottom: '2rem' }} placeholder='Your headline here...' modules={{ toolbar: { link: false } }} />
             {Parser(profileInfo.headline)}
             <Quill theme="snow" name="about" value={profileInfo.about} onChange={(value) => handleChange(value, 'about')} style={{ marginBottom: '2rem' }} placeholder='All about you...' modules={{ toolbar: { link: false } }} />
+
+            <button onClick={submitChanges}>Update</button>
         </>
     )
 }
